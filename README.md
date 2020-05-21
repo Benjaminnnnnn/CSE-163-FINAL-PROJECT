@@ -217,8 +217,6 @@ Estimated Time on Each Problem:
 6.  General brainstorming, discussion, determining how to divide tasks,
     etc.: 5-10 hours overall from start to finish of the project.
 
- **Response to Part0 Feedback**
-We deleted using to get GitHub repository data part.
 
 [^1]: string
 
