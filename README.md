@@ -1,12 +1,10 @@
 ---
-author:
-- '*Claire Luo, Samantha Shimogawa, Benjamin Zhuang*\'
+author: 'Claire Luo, Samantha Shimogawa, Benjamin Zhuang'
 date: May 2020
-title: '**An Analysis of World Happiness**'
+title: 'An Analysis of World Happiness'
 ---
 
-\maketitle
-\
+**Research Questions**
 
 1.  What is the distribution of the happiness scores?
 
@@ -52,7 +50,7 @@ title: '**An Analysis of World Happiness**'
     We want to see if we can try to predict future happiness scores for
     these countries based on the information we have in this dataset.
 
-**Motivations**\
+**Motivations**
 
 Why understand the happiest country and the least happiest country? Why
 learn the trend of the happiness level of a country? Why extrapolate the
@@ -73,10 +71,10 @@ person's life happier or not because all the people would want to pursue
 a more pleasant life. By observing the happiness ranks of the countries,
 we can assess the progress of the nations based on the measurements.
 
-**Datasets**\
+**Datasets**
 
-[\[World
-Happiness\]](https://www.kaggle.com/unsdsn/world-happiness)(Click on
+[World
+Happiness](https://www.kaggle.com/unsdsn/world-happiness)(Click on
 dataset name to get URL)
 
 The world happiness data consists the happiness score of 155 countries
@@ -115,8 +113,8 @@ as economy, health, freedom, trust between government and people, etc.
 -   Dystopia Residual The extent to which Dystopia Residual contributed
     to the calculation of the Happiness Score.
 
-[\[Country
-Ploygon\]](https://datahub.io/core/geo-countries#pandas)(Click on
+[Country
+Ploygon](https://datahub.io/core/geo-countries#pandas)(Click on
 dataset name to get URL)
 
 GeoJSON formatted data, describing each country as either a polygon or a
@@ -124,14 +122,14 @@ multipolygon
 
 1.  New libraries
 
-    -   \st{requests (loading GitHub repository data)}
+    -   requests (loading GitHub repository data)
     -   plotly (visualization animation)
 
     -   SciPy (data normalization)
 
     -   folium (interactive map visualization)
 
-    -   mpl\_toolkits (2D base map data)
+    -   mpl_toolkits (2D base map data)
 
     -   descartes (matplotlib GeoJSON data patch)
 
@@ -162,47 +160,47 @@ multipolygon
     important for predicting the happiness score, thereby determining
     which features most influence happiness.
 
-**Methodology**\
+**Methodology**
 
-1.  Distribution  \
+1.  Distribution
     We can make a box plot or histogram to see what the distribution of
     the happiness scores look like. Analyses we can make include the
     most frequent happiness score and the spread of the scores.
 
-2.  5 happiest and least happy countries and their geolocation  \
+2.  5 happiest and least happy countries and their geolocation
     We can use a pandas function to quickly find the top five and bottom
     five countries in the dataset. We can plot these countries onto a
     map, coloring the happy countries one color and the least happy
     countries another color. Then, we can see if location plays a role
     in affecting their happiness scores.
 
-3.  Happiness over time  \
+3.  Happiness over time
     We can create a scatterplot of happiness scores over time (i.e.,
     create a plot where Time (in years) is on the x-axis and happiness
     score is on the y-axis, with different countries in different colors
     so we can see their trends over time).
 
-4.  Factors that contribute to a high/low happiness score  \
+4.  Factors that contribute to a high/low happiness score
     We can use a decision tree to see which factors are important for
     determining the happiness score of a country. We can perform this
     analysis on different countries and find out the variations in the
     factors that they value the most.
 
 5.  Future happiness scores for the 5 happiest and least happy countries
-     \
+
     We can create a ML model (decision tree, logistic regression, random
     forest,or KNN), train it using the existing data from our dataset,
     and then use the model with the best performance to try to predict
     the future happiness scores for the five happiest and least happy
     countries, as found in research question \#2.
 
-**Work Plan**\
+**Work Plan**
 For the writing portion (Part 0 and Part 1), we work on the report
 together through video calling to discuss what to write about for each
 part. For the coding portion, we made a GitHub repository where we share
 our code. We can assign the simpler tasks for each of us to work
 individually. For more challenging or group tasks, everyone can
-contribute through video calling.  \
+contribute through video calling.
 Estimated Time on Each Problem:
 
 1.  Research Question 1: 1 hour.
@@ -219,7 +217,7 @@ Estimated Time on Each Problem:
 6.  General brainstorming, discussion, determining how to divide tasks,
     etc.: 5-10 hours overall from start to finish of the project.
 
- **Response to Part0 Feedback**\
+ **Response to Part0 Feedback**
 We deleted using to get GitHub repository data part.
 
 [^1]: string
