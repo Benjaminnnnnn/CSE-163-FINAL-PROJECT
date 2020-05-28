@@ -1,7 +1,7 @@
 ---
-author: 'Claire Luo, Samantha Shimogawa, Benjamin Zhuang'
-date: May 2020
-title: 'An Analysis of World Happiness'
+Author: 'Claire Luo, Samantha Shimogawa, Benjamin Zhuang'
+Date: May 2020
+Title: 'An Analysis of World Happiness'
 ---
 
 **Research Questions**
@@ -195,6 +195,7 @@ multipolygon
     countries, as found in research question \#2.
 
 **Work Plan**
+
 For the writing portion (Part 0 and Part 1), we work on the report
 together through video calling to discuss what to write about for each
 part. For the coding portion, we made a GitHub repository where we share
