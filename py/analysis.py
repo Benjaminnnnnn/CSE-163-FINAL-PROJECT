@@ -1,3 +1,9 @@
+'''
+This program analyzes the world happiness
+data from 2015 to 2019. It explores the data
+and makes some plots in order to answer few
+research question toward the world happiness.
+'''
 import warnings
 
 import pandas as pd
