@@ -1,4 +1,7 @@
 '''
+Claire Luo, Samantha Shimogawa, Benjamin Zhuang
+CSE 163 Section AD
+
 This program analyzes the world happiness
 data from 2015 to 2019. It explores the data
 and makes some plots in order to answer few
@@ -33,7 +36,8 @@ warnings.filterwarnings('ignore')
 # What is the distribution of the happiness scores?
 def q1(happiness_data):
     '''
-    q1 makes three plots, a histogram of the distribution of
+    q1 takes a pandas dataframe as a parameter, then
+    makes three plots, a histogram of the distribution of
     happiness score for each year, a heatmap represents the
     correlation in each column of the data, and a 3D choropleth
     map shows the actual distribution of happiness score in the
@@ -129,7 +133,8 @@ def q1(happiness_data):
 # have the least happiness score? What are the geolocations of these countries?
 def q2(happiness_data):
     '''
-    q2 explores the five most happy countries and the five least happy
+    q2 takes a pandas dataframe as a parameter, and then
+    explores the five most happy countries and the five least happy
     countries, and plots a world map that shows the geolocations of these
     countries, most happy country will be shown in pink, while least
     happy country will be in purple.
@@ -178,7 +183,8 @@ def q2(happiness_data):
 # increasing, decreasing, or fluctuating?
 def q3(happiness_data):
     '''
-    q3 attempts to find the trends of happiness among different representative
+    q3 takes a pandas dataframe as a parameter, and then
+    attempts to find the trends of happiness among different representative
     countries (i.e. five happiest countries and five saddest countries).
     It will plot the graph using seaborn first. And then it will attempt
     to use plotly to improve the visualization.
@@ -429,15 +435,16 @@ def q3(happiness_data):
 # what are some measures that contribute to a lower happiness score?
 def q4(happiness_data):
     '''
-    q4 builds a DecisionTreeClassifier to determine the importance of each
+    q4 takes a pandas dataframe as a parameter, and then
+    builds a DecisionTreeClassifier to determine the importance of each
     measures
     (six key factors, e.g. GDP per capita, family support, health, etc.)
     in countributing to happiness of a country. The original data is not
     labeled, and we don't have a very academic definition of happy countries.
     But for simplicity, we will just use the mean happiness score to separate
-    happy and not happy country. In other word, if Socre(country) < mean
-    happiness score, label = 1, else, label = -1. For testing our the
-    reliability of our model, we will withhold the lastest data from 2019 as
+    happy and not happy country. In other word, if Score(country) < mean
+    happiness score, label = 1, else, label = -1. For testing the
+    reliability of our model, we will withhold the latest data from 2019 as
     our test set.
     '''
     labeled_data = []
@@ -493,6 +500,7 @@ def q4(happiness_data):
 
     def draw_tree(tree_model, features):
         """
+        Takes a tree model and list of features as parameters, and then
         visualizes a Decision Tree
         """
         tree_data = tree.export_graphviz(tree_model,
@@ -555,7 +563,8 @@ def q4(happiness_data):
 
     def print_feature_importances(model, features):
         '''
-        print the importances of given features in the model
+        Takes a ML model and list of features as parameters, and then
+        prints the importances of given features in the model
         '''
         print('Feature Importance')
         coefficients = list(zip(features, model.feature_importances_))
@@ -565,6 +574,12 @@ def q4(happiness_data):
     print_feature_importances(clf.best_estimator_, features)
 
     def plot_scores(clf, hyperparameters, score_key, name, showscale):
+        '''
+        Takes a GridSearchCV object clf, dict of hyperparameters, the score
+        key, type of set (train/test), and boolean showscale if we would like
+        the scale to be shown. Plots the scores with the given parameters
+        onto the figure.
+        '''
         cv_results = clf.cv_results_
         scores = cv_results[score_key]
         scores = scores.reshape(len(hyperparameters['max_depth']),
@@ -624,6 +639,9 @@ def q4(happiness_data):
 
 
 def main():
+    '''
+    Processes dataset and runs methods to conduct analysis of data.
+    '''
     # read data from my github repository
     base_url = 'https://raw.githubusercontent.com/'\
             + 'Benjaminnnnnn/CSE-163-FINAL-PROJECT/master/data'
