@@ -44,6 +44,7 @@ def q1(happiness_data):
     fig = make_subplots(rows=1, cols=5, shared_yaxes=True,
                         vertical_spacing=0.04)
     # getting colors for plotting
+    color_histogram = px.colors.qualitative.Set1
     color_discrete_sequence = px.colors.qualitative.D3
 
     for i, color in list(zip(range(2015, 2020), color_discrete_sequence)):
@@ -55,7 +56,9 @@ def q1(happiness_data):
                                    name=i,
                                    hovertemplate='Count %{y}',
                                    text='%{y}',
-                                   nbinsx=10),
+                                   nbinsx=10,
+                                   marker_color=color_histogram[i-2015],
+                                   opacity=0.8),
                       row=1, col=i-2014)
         # update fig x range
         fig.update_xaxes(nticks=10)
@@ -64,7 +67,7 @@ def q1(happiness_data):
         fig.add_trace(go.Scatter(x=[round(mean_score, 2)] * 50,
                                  y=np.arange(-1, 40),
                                  line=dict(
-                                     color=color_discrete_sequence[i-2019]
+                                     color=color_discrete_sequence[2015-i]
                                  ),
                                  name=str(i)+' Mean',
                                  showlegend=False,
@@ -73,7 +76,7 @@ def q1(happiness_data):
                       row=1, col=i-2014)
 
     # update the entire subplots layout
-    fig.update_layout(height=430, title='Happiness Score Yearly Distribution',
+    fig.update_layout(height=400, title='Happiness Score Yearly Distribution',
                       legend_title_text='Year', yaxis=dict(range=[0, 30]),
                       hovermode='x unified')
     fig.show()
@@ -94,7 +97,16 @@ def q1(happiness_data):
         horizontalalignment='right'
     )
     ax.set_title('Happiness Data Correlation', fontsize=12)
-    fig.show()
+    fig.savefig('./img/Happiness_Data_Correlation.png', bbox_inches = "tight")
+
+    # violion plot of regional happiness score distribution
+    fig, ax = plt.subplots(1, 1, dpi=200)
+    ax = sns.violinplot(x=happiness_data['happiness score'],
+                        y=happiness_data['region'])
+    ax.set_xlabel('Happiness Score')
+    ax.set_ylabel('Region')
+    ax.set_title('Happiness Score Regional Distribution')
+    fig.savefig('./img/Happiness_Distribution_Violin.png', bbox_inches = "tight")
 
     # 3D choropleth map
     # create choropleth map data
@@ -171,6 +183,7 @@ def q2(happiness_data):
     countries.plot(ax=ax, color='#EEEEEE')
     top_5_happy_countries.plot(color='pink', ax=ax)
     top_5_sad_countries.plot(color='purple', ax=ax)
+    plt.savefig('./img/Happy_And_Sad_Countries_Map.png', bbox_inches = "tight")
 
 
 # Question 3
@@ -503,7 +516,7 @@ def q4(happiness_data):
                                          filled=True,
                                          out_file=None)
         graph = graphviz.Source(tree_data)
-        graph.render(filename='./small_tree', format='png',
+        graph.render(filename='./img/small_tree', format='png',
                      quiet=True)
 
     draw_tree(small_tree_model, features)
@@ -663,6 +676,9 @@ def main():
 
     # concatenate the list of dataframes into one big dataframe for analysis
     happiness_data = processing.concatenate_dataframes(dataframes)
+
+    # add region column to the data
+    happiness_data = processing.add_region(happiness_data)
 
     q1(happiness_data)
     print('Q1 Sucess')

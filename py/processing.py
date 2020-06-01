@@ -5,6 +5,7 @@ world happiness analysis
 import re
 import warnings
 import pandas as pd
+import country_converter as cc
 
 warnings.filterwarnings('ignore')
 
@@ -77,3 +78,13 @@ def concatenate_dataframes(dataframes):
     return the new concatenated datafram
     '''
     return pd.concat(dataframes, ignore_index=True)
+
+
+def add_region(data):
+    '''
+    takes a dataframe, add a region columns
+    according to the country data entry
+    '''
+    regions = cc.convert(data['country'].to_list(), to='unregion')
+    data['region'] = regions
+    return data
