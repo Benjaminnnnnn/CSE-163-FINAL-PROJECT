@@ -1,4 +1,7 @@
 '''
+Claire Luo, Samantha Shimogawa, Benjamin Zhuang
+CSE 163 Section AD
+
 This program cleans and processes data needed for
 world happiness analysis
 '''
@@ -34,7 +37,7 @@ def column_filter(dataframes, columns):
     '''
     takes the columns to be extracted from the original
     list of dataframes, return a list of dataframes with
-    filtered columns
+    filtered columns (given parameter)
     '''
     column_filter = re.compile('|'.join([col_name[0] for col_name in columns]))
 
@@ -75,7 +78,7 @@ def concatenate_dataframes(dataframes):
     '''
     takes a list of dataframes, concatenate
     the dataframes into one big dataframe,
-    return the new concatenated datafram
+    return the new concatenated dataframe
     '''
     return pd.concat(dataframes, ignore_index=True)
 
