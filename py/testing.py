@@ -51,8 +51,7 @@ def test_rename_col(dataframes, columns):
             'generosity',
             'year'], dataframes[i].columns.tolist())
     
-    for i in range(2, 5):
-        assert_equals(['country',
+    assert_equals(['country',
             'happiness rank',
             'happiness score',
             'GDP per capita',
@@ -61,7 +60,19 @@ def test_rename_col(dataframes, columns):
             'freedom',
             'generosity',
             'government corruption',
-            'year'], dataframes[i].columns.tolist())
+            'year'], dataframes[2].columns.tolist())
+
+    for i in range(3, 5):
+        assert_equals(['happiness rank',
+                'country',
+                'happiness score',
+                'GDP per capita',
+                'family',
+                'life expectancy',
+                'freedom',
+                'generosity',
+                'government corruption',
+                'year'], dataframes[i].columns.tolist())
 
     # return modified list of dataframes so testing can continue
     return dataframes
