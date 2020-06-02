@@ -11,6 +11,9 @@ import processing
 
 
 def test_add_year(dataframes):
+    '''
+    test the method add_year()
+    '''
     # check that length of columns has been increased by 1
     dataframes = processing.add_year(dataframes)
     assert_equals([13, 14, 13, 10, 10], [len(df.columns) for df in dataframes])
@@ -24,6 +27,9 @@ def test_add_year(dataframes):
 
 
 def test_column_filter(dataframes, columns):
+    '''
+    test the method column_filter()
+    '''
     dataframes = processing.column_filter(dataframes, columns)
 
     # confirm dataframes have the correct number of columns after filtering
@@ -34,6 +40,9 @@ def test_column_filter(dataframes, columns):
 
 
 def test_rename_col(dataframes, columns):
+    '''
+    test the method rename_col()
+    '''
     dataframes = processing.rename_cols(dataframes, columns)
     # confirm dataframes have the correct number of columns
     assert_equals([10, 10, 10, 10, 10], [len(df.columns) for df in dataframes])
@@ -79,6 +88,9 @@ def test_rename_col(dataframes, columns):
 
 
 def test_concatenate_dataframes(dataframes):
+    '''
+    test the method concatenate_dataframes()
+    '''
     df = processing.concatenate_dataframes(dataframes)
 
     # check that the shape is correct
@@ -101,6 +113,9 @@ def test_concatenate_dataframes(dataframes):
 
 
 def test_add_region(df):
+    '''
+    test the method add_region()
+    '''
     df = processing.add_region(df)
 
     # check that the dataframe has the correct number of columns

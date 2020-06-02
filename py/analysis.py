@@ -101,7 +101,7 @@ def q1(happiness_data):
         horizontalalignment='right'
     )
     ax.set_title('Happiness Data Correlation', fontsize=12)
-    fig.savefig('./img/Happiness_Data_Correlation.png', bbox_inches = "tight")
+    fig.savefig('./img/happiness_data_correlation.png', bbox_inches="tight")
 
     # violion plot of regional happiness score distribution
     fig, ax = plt.subplots(1, 1, dpi=200)
@@ -110,7 +110,7 @@ def q1(happiness_data):
     ax.set_xlabel('Happiness Score')
     ax.set_ylabel('Region')
     ax.set_title('Happiness Score Regional Distribution')
-    fig.savefig('./img/Happiness_Distribution_Violin.png', bbox_inches = "tight")
+    fig.savefig('./img/happiness_distribution_violin.png', bbox_inches="tight")
 
     # 3D choropleth map
     # create choropleth map data
@@ -177,18 +177,33 @@ def q2(happiness_data):
     # getting the five least happy countries in the world
     top_5_sad_countries = countries[(countries['ADMIN'] == 'Burundi') |
                                     (countries['ADMIN'] == 'Central'
-                                    + 'African Republic') |
+                                    + ' African Republic') |
                                     (countries['ADMIN'] == 'Syria') |
                                     (countries['ADMIN'] == 'South Sudan') |
                                     (countries['ADMIN'] == 'Rwanda')]
 
     # making a world graph, most happy country in pink
     # least happy country in purple
-    fig, ax = plt.subplots(1, figsize=(15, 7))
+    fig, ax = plt.subplots(1, figsize=(15, 7), dpi=200)
     countries.plot(ax=ax, color='#EEEEEE')
     top_5_happy_countries.plot(color='pink', ax=ax)
     top_5_sad_countries.plot(color='purple', ax=ax)
-    plt.savefig('./img/Happy_And_Sad_Countries_Map.png', bbox_inches = "tight")
+
+    # add title and arrows on the graph
+    ax.set_title('Top Five Happy and Sad Countries',
+                 fontdict=dict({'fontsize': 16}))
+    ax.arrow(x=6, y=-3.5, dx=6, dy=6,
+             head_length=2, head_width=2.5,
+             fc='k', ec='k')
+    ax.annotate('Sad Countries', xy=(-12, -9), fontsize='large')
+
+    ax.arrow(x=40, y=55, dx=-7, dy=8,
+             head_length=2, head_width=2.5,
+             fc='k', ec='k')
+    ax.annotate('Happy Countries', xy=(24, 51), fontsize='large')
+
+    # save plot
+    plt.savefig('./img/happy_and_sad_countries_map.png', bbox_inches="tight")
 
 
 # Question 3
@@ -657,7 +672,7 @@ def main():
     '''
     # read data from my github repository
     base_url = 'https://raw.githubusercontent.com/'\
-            + 'Benjaminnnnnn/CSE-163-FINAL-PROJECT/master/data'
+        + 'Benjaminnnnnn/CSE-163-FINAL-PROJECT/master/data'
     # data to be read
     files = [base_url + '/' + str(i) + '.csv' for i in range(2015, 2020)]
 
@@ -700,12 +715,19 @@ def main():
 
     q1(happiness_data)
     print('Q1 Sucess')
+    print()
+
     q2(happiness_data)
     print('Q2 Success')
+    print()
+
     q3(happiness_data)
     print('Q3 Success')
+    print()
+
     q4(happiness_data)
     print('Q4 Success')
+    print()
 
 
 if __name__ == '__main__':
