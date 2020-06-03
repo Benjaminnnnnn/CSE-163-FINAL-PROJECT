@@ -5,7 +5,6 @@ CSE 163 Section AD
 This program tests the correctness of the world
 happiness analysis processes.
 '''
-from pandas.testing import assert_frame_equal
 from cse163_utils import assert_equals
 import processing
 
@@ -21,7 +20,7 @@ def test_add_year(dataframes):
     # check that the year for each dataframe is correct
     for i in range(5):
         assert_equals(2015+i, dataframes[i]['Year'][0])
-    
+
     # return modified list of dataframes so testing can continue
     return dataframes
 
@@ -50,17 +49,17 @@ def test_rename_col(dataframes, columns):
     # confirm dataframes have correctly named columns
     for i in range(5):
         cols = dataframes[i].columns.tolist()
-        cols.sort()
+        cols = sorted(cols)
         assert_equals(['GDP per capita',
-            'country',
-            'family',
-            'freedom',
-            'generosity',
-            'government corruption',
-            'happiness rank',
-            'happiness score',
-            'life expectancy',
-            'year'], cols)
+                       'country',
+                       'family',
+                       'freedom',
+                       'generosity',
+                       'government corruption',
+                       'happiness rank',
+                       'happiness score',
+                       'life expectancy',
+                       'year'], cols)
 
     # return modified list of dataframes so testing can continue
     return dataframes
@@ -76,16 +75,16 @@ def test_concatenate_dataframes(dataframes):
     assert_equals((782, 10), df.shape)
 
     # confirm that columns of new dataframe are correct
-    assert_equals(['country',
-            'happiness rank',
-            'happiness score',
-            'GDP per capita',
-            'family',
-            'life expectancy',
-            'freedom',
-            'government corruption',
-            'generosity',
-            'year'], df.columns.tolist())
+    assert_equals(['GDP per capita',
+                   'country',
+                   'family',
+                   'freedom',
+                   'generosity',
+                   'government corruption',
+                   'happiness rank',
+                   'happiness score',
+                   'life expectancy',
+                   'year'], df.columns.tolist())
 
     # return modified dataframe so testing can continue
     return df
@@ -101,17 +100,17 @@ def test_add_region(df):
     assert_equals(11, len(df.columns))
 
     # check that column names are correct
-    assert_equals(['country',
-        'happiness rank',
-        'happiness score',
-        'GDP per capita',
-        'family',
-        'life expectancy',
-        'freedom',
-        'government corruption',
-        'generosity',
-        'year',
-        'region'], df.columns.tolist())
+    assert_equals(['GDP per capita',
+                   'country',
+                   'family',
+                   'freedom',
+                   'generosity',
+                   'government corruption',
+                   'happiness rank',
+                   'happiness score',
+                   'life expectancy',
+                   'year',
+                   'region'], df.columns.tolist())
 
     # make sure first entry is a region, not empty (and correct)
     assert_equals('Western Europe', df['region'][0])
